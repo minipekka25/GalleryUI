@@ -1,0 +1,46 @@
+@import url("https://fonts.googleapis.com/css2?family=Neue+Haas+Grotesk+Display+Pro:wght@400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Agrandir:wght@400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Aeonik:wght@500&display=swap");
+
+body {
+  margin: 0;
+  line-height: normal;
+  font-family: var(--font-neue);
+  box-sizing: border-box;
+}
+:root {
+  /* fonts */
+  --font-neue: "Neue Haas Grotesk Display Pro";
+  --font-agrandir: Agrandir;
+  --font-aeonik: Aeonik;
+  --font-raleway: Raleway;
+
+  /* font sizes */
+  --font-size-sm: 14px;
+  --font-size-base: 16px;
+  --font-size-xs: 12px;
+  --font-size-5xl: 24px;
+  --font-size-29xl: 48px;
+  --font-size-xl: 20px;
+  --font-size-3xs: 10px;
+
+  /* Colors */
+  --color-white: #fff;
+  --color-black: #000;
+  --color-dimgray: #666;
+  --color-darkgray: #a69b8c;
+  --color-gray: #828282;
+  --color-darkorange: #fe9337;
+  --color-whitesmoke: #f0eeed;
+  --color-darkslategray: #343d3d;
+  --color-orange: #ffb500;
+
+  /* Paddings */
+  --padding-9xs: 4px;
+
+  /* border radiuses */
+  --br-mini: 15px;
+  --br-lg: 18px;
+  --br-9xl: 28px;
+}
