@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import AlbumList from './albums.tsx';
+import AlbumList from '../pages/albums';
 
 jest.mock('next/router', () => ({
   useRouter: () => ({

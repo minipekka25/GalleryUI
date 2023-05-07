@@ -1,6 +1,6 @@
 import { render, screen, act } from '@testing-library/react';
 import axios from 'axios';
-import PhotosList from './photos.tsx';
+import PhotosList from '../pages/photos';
 import '@testing-library/jest-dom';
 
 

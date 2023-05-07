@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import Layout from './layouts.tsx';
+import Layout from '../components/layouts';
 
 describe('Layout component', () => {
   it('renders children', () => {

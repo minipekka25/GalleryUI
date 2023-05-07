@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import BreadCrumbs from './BreadCrumbs.tsx';
+import BreadCrumbs from '../components/BreadCrumbs';
 
 
 jest.mock('next/router', () => ({

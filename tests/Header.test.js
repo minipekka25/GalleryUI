@@ -1,6 +1,6 @@
 import { render } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import Header from './Header.tsx';
+import Header from '../components/Header';
 
 describe('Header', () => {
   it('renders the component with given props', () => {

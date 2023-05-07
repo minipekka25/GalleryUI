@@ -2,7 +2,7 @@ import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import axios from 'axios';
-import UserList from './index.tsx';
+import UserList from '../pages/index';
 
 jest.mock('next/router', () => ({
     useRouter: () => ({
