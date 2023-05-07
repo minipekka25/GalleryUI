@@ -10,7 +10,7 @@ the album.
 
 ## 🔗 Live Site
 
-[![website](https://img.shields.io/badge/live%20site-link-black)](https://katherineoelsner.com/)
+[![website](https://img.shields.io/badge/live%20site-link-black)](https://gallery-ui-three.vercel.app)
 
 
 ## Usage Guides
@@ -42,7 +42,7 @@ the album.
 Clone the project
 
 ```bash
-  git clone https://link-to-project
+  git clone https://github.com/minipekka25/GalleryUI.git
 ```
 
 Go to the project directory
