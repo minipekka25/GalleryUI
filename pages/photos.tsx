@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router'
 import axios from 'axios';
-import Header from "../components/Header.tsx"
-import Layout from "../components/layouts.tsx"
+import Header from "../components/Header"
+import Layout from "../components/layouts"
 import styles from "./Photos.module.css"
-import BreadCrumbs from '../components/BreadCrumbs.tsx';
+import BreadCrumbs from '../components/BreadCrumbs';
 
 interface Photo {
   albumId: number;

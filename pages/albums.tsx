@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router'
 import axios from 'axios';
-import BreadCrumbs from '../components/BreadCrumbs.tsx';
-import Header from "../components/Header.tsx"
-import Layout from "../components/layouts.tsx"
+import BreadCrumbs from '../components/BreadCrumbs';
+import Header from "../components/Header"
+import Layout from "../components/layouts"
 import styles from "./Albums.module.css"
 
 interface Album {
