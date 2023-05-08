@@ -5,6 +5,9 @@ import BreadCrumbs from '../components/BreadCrumbs';
 import Header from "../components/Header"
 import Layout from "../components/layouts"
 import styles from "./Albums.module.css"
+import { useSelector, useDispatch } from 'react-redux';
+import { setAlbums, setUserId } from '../redux/albumsSlice';
+
 
 interface Album {
   userId: number;
@@ -12,19 +15,21 @@ interface Album {
   title: string;
 }
 
-function AlbumList() {
-  const [albums, setAlbums] = useState<Album[]>([]);
-  const [userId, setUserId] = useState<number>(1);
+function AlbumList(): JSX.Element {
+
+  const albums = useSelector((state:any) => state.album.albums);
+  const userId = useSelector((state:any) => state.album.userId);
+  const dispatch = useDispatch();
 
   const router = useRouter()
 
   useEffect(() => {
     if(router.isReady){
-        setUserId(Number(router.query.userId))
+        dispatch(setUserId(Number(router.query.userId)));
         axios
         .get<Album[]>(`https://jsonplaceholder.typicode.com/albums?userId=${router.query.userId}`)
         .then((response) => {
-          setAlbums(response.data);
+          dispatch(setAlbums(response.data));
         })
         .catch((error) => {
           console.error(error);

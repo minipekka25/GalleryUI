@@ -6,6 +6,9 @@ import Layout from "../components/layouts"
 import BreadCrumbs from '../components/BreadCrumbs';
 import Header from "../components/Header"
 
+import { useSelector, useDispatch } from 'react-redux';
+import { setUsers } from '../redux/usersSlice';
+
 interface User {
   id: number;
   name: string;
@@ -14,19 +17,22 @@ interface User {
 }
 
 function UserList(): JSX.Element {
-  const [users, setUsers] = useState<User[]>([]);
+
+  const users = useSelector((state: any) => state.users.users);
+  const dispatch = useDispatch();
+
   const router = useRouter();
 
   useEffect(() => {
     axios
       .get<User[]>('https://jsonplaceholder.typicode.com/users')
       .then((response) => {
-        setUsers(response.data);
+                dispatch(setUsers(response.data));
       })
       .catch((error) => {
         console.error(error);
       });
-  }, []);
+  }, [dispatch]);
 
   const padNumber = (num: number): string => {
     const normalized = num + 1;
@@ -48,7 +54,7 @@ function UserList(): JSX.Element {
             crumbs={[
                 {text:"Home",uri:""}
             ]}
-        />
+      />
         <Header 
           DetailName = {"Total Users"}
           DetailVal = {users.length}

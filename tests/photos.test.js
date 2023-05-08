@@ -2,7 +2,8 @@ import { render, screen, act } from '@testing-library/react';
 import axios from 'axios';
 import PhotosList from '../pages/photos';
 import '@testing-library/jest-dom';
-
+import store from "../redux/store"
+import { Provider } from 'react-redux'
 
 jest.mock('axios');
 
@@ -22,7 +23,10 @@ describe('PhotosList', () => {
     ];
     axios.get.mockResolvedValue({ data });
     await act(async () => {
-      render(<PhotosList />);
+      render(
+      <Provider store={store}>
+      <PhotosList />
+      </Provider>);
     });
     expect(screen.getByText('photo1')).toBeInTheDocument();
     expect(screen.getByText('photo2')).toBeInTheDocument();

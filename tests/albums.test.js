@@ -1,6 +1,8 @@
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import AlbumList from '../pages/albums';
+import store from "../redux/store"
+import { Provider } from 'react-redux'
 
 jest.mock('next/router', () => ({
   useRouter: () => ({
@@ -16,7 +18,10 @@ jest.mock('axios', () => ({
 
 describe('AlbumList', () => {
   it('should render the component with correct data', async () => {
-    render(<AlbumList />);
+    render(
+    <Provider store={store}>
+    <AlbumList />
+    </Provider>);
 
     expect(await screen.findByText('Total Albums')).toBeInTheDocument();
     expect(screen.getByText('test album')).toBeInTheDocument();

@@ -3,6 +3,8 @@ import { render, screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import axios from 'axios';
 import UserList from '../pages/index';
+import store from "../redux/store"
+import { Provider } from 'react-redux'
 
 jest.mock('next/router', () => ({
     useRouter: () => ({
@@ -21,7 +23,11 @@ jest.mock('next/router', () => ({
 describe('UserList', () => {
 
   it('should render a list of users', async () => {
-    render(<UserList />);
+    render(
+    <Provider store={store}>
+      <UserList />
+    </Provider>
+    );
 
     expect(await screen.findByText('John Doe')).toBeInTheDocument();
     expect(await screen.findByText('Jane Doe')).toBeInTheDocument();
@@ -35,7 +41,11 @@ describe('UserList', () => {
     const users = [{ id: 1, name: 'John Doe', username: 'johndoe', email: 'john@example.com' }];
     axios.get.mockResolvedValueOnce({ data: users });
 
-    render(<UserList />);
+    render(
+      <Provider store={store}>
+        <UserList />
+      </Provider>
+      );
 
     expect(await screen.findByText('Total Users')).toBeInTheDocument();
     expect(screen.getByText('1')).toBeInTheDocument();
@@ -44,7 +54,11 @@ describe('UserList', () => {
   it('should render zero users when the API returns an empty list', async () => {
     axios.get.mockResolvedValueOnce({ data: [] });
 
-    render(<UserList />);
+    render(
+      <Provider store={store}>
+        <UserList />
+      </Provider>
+      );
 
     expect(await screen.findByText('Total Users')).toBeInTheDocument();
     expect(screen.getByText('0')).toBeInTheDocument();

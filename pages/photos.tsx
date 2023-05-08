@@ -5,6 +5,8 @@ import Header from "../components/Header"
 import Layout from "../components/layouts"
 import styles from "./Photos.module.css"
 import BreadCrumbs from '../components/BreadCrumbs';
+import { useSelector, useDispatch } from 'react-redux';
+import { setPhotos, setUserId, setAlbumId } from '../redux/photosSlice';
 
 interface Photo {
   albumId: number;
@@ -14,21 +16,23 @@ interface Photo {
   thumbnailUrl: string;
 }
 
-function PhotosList() {
-  const [photos, setPhotos] = useState<Photo[]>([]);
-  const [userId, setUserId] = useState<string | string[]>([]);
-  const [albumId, setAlbumId] = useState<string | string[]>([]);
+function PhotosList(): JSX.Element {
+
+  const photos = useSelector((state:any) => state.photo.photos);
+  const userId = useSelector((state:any) => state.photo.userId);
+  const albumId = useSelector((state:any) => state.photo.albumId);
+  const dispatch = useDispatch();
 
   const router = useRouter()
 
   useEffect(() => {
     if(router.isReady){
-        setUserId(router.query.userId as string);
-        setAlbumId(router.query.albumId as string);
+        dispatch(setUserId(Number(router.query.userId)));
+        dispatch(setAlbumId(Number(router.query.albumId)));
         axios
         .get<Photo[]>(`https://jsonplaceholder.typicode.com/photos?albumId=${router.query.albumId}`)
         .then((response) => {
-            setPhotos(response.data);
+          dispatch(setPhotos(response.data));
         })
         .catch((error) => {
           console.error(error);
@@ -51,7 +55,7 @@ function PhotosList() {
       DetailVal = {photos.length}
       />
       <div className={styles.PhotosItemsContainer}>
-        {photos.map((photo,idx) => (
+        {photos.map((photo: Photo, idx: number) => (
         <div className={styles.PhotoItem} key={idx}>     
             <img src={photo.thumbnailUrl} className={styles.PhotoThumb}/>
             <div className={styles.PhotoName}>{photo.title}</div>
